@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sudeki Remastered: modding status</title>
+<meta name="description" content="What mods can change in Sudeki Remastered today, what is experimental and what is still planned. Mods go into the mods folder (or the configuration tool&#x27;s Mods tab) and never touch the installed game. We update this page as the work moves on.">
+<style>
+:root {
+  --bg: #f6f4ef; --panel: #ffffff; --ink: #1d1b18; --muted: #6b665d; --line: #e4dfd4; --accent: #8a5a1f;
+  --supported: #1f7a3d; --supported-bg: #e3f2e7; --limited: #7a6510; --limited-bg: #f6efcf;
+  --experimental: #a14a12; --experimental-bg: #fbe6d6; --progress: #1d5a9e; --progress-bg: #dfeaf7;
+  --planned: #5d5a54; --planned-bg: #ecebe7; --notplanned: #4a4744; --notplanned-bg: #dcdad6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15140f; --panel: #1e1c17; --ink: #ece7dc; --muted: #a39d90; --line: #33302a; --accent: #d9a35c;
+    --supported: #7fd69a; --supported-bg: #1d3424; --limited: #e3cd6a; --limited-bg: #353016;
+    --experimental: #f0a46c; --experimental-bg: #3a2516; --progress: #8dbcf0; --progress-bg: #1a2a3d;
+    --planned: #bdb8ae; --planned-bg: #2b2924; --notplanned: #9a958c; --notplanned-bg: #24221e;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 960px; margin: 0 auto; padding: 40px 16px 64px; }
+h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 8px; }
+.updated { color: var(--muted); margin: 0 0 16px; }
+.intro { max-width: 70ch; margin: 0 0 24px; }
+.summary { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 32px; }
+.chip { border: 1px solid var(--line); background: var(--panel); color: var(--ink); border-radius: 999px;
+  padding: 4px 12px; font: inherit; font-size: 0.9rem; cursor: pointer; }
+.chip[aria-pressed="true"] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+h2 { font-size: 1.15rem; margin: 32px 0 8px; }
+table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; }
+td { padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+tr:first-child td { border-top: 0; }
+td.feature { width: 45%; }
+td.state { width: 1%; white-space: nowrap; }
+td.note { color: var(--muted); font-size: 0.92rem; }
+.badge { display: inline-block; border-radius: 4px; padding: 1px 8px; font-size: 0.85rem; font-weight: 600; }
+.tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.tool { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.tool b { display: block; margin-bottom: 4px; }
+.tool span { color: var(--muted); font-size: 0.92rem; }
+footer { margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
+a { color: var(--accent); }
+@media (max-width: 640px) {
+  tr { display: block; border-top: 1px solid var(--line); padding: 8px 0; }
+  tr:first-child { border-top: 0; }
+  td { display: block; border: 0; padding: 2px 12px; width: auto !important; white-space: normal !important; }
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Sudeki Remastered: modding status</h1>
+<p class="updated">Last updated 2026-10-28</p>
+<p class="intro">What mods can change in Sudeki Remastered today, what is experimental and what is still planned. Mods go into the mods folder (or the configuration tool&#x27;s Mods tab) and never touch the installed game. We update this page as the work moves on.</p>
+<div class="summary">
+<button class="chip" data-state="supported" aria-pressed="false"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span> 19</button>
+<button class="chip" data-state="limited" aria-pressed="false"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span> 3</button>
+<button class="chip" data-state="experimental" aria-pressed="false"><span class="badge" style="color:var(--experimental);background:var(--experimental-bg)">Experimental</span> 3</button>
+<button class="chip" data-state="progress" aria-pressed="false"><span class="badge" style="color:var(--progress);background:var(--progress-bg)">In progress</span> 1</button>
+<button class="chip" data-state="planned" aria-pressed="false"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span> 5</button>
+<button class="chip" data-state="notplanned" aria-pressed="false"><span class="badge" style="color:var(--notplanned);background:var(--notplanned-bg)">Not planned</span> 2</button>
+</div>
+<section class="features"><h2>Mods in general</h2><table>
+<tr data-state="supported"><td class="feature">Mod folders and .zip files, mod.ini (name, author, version, description in five languages)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note"></td></tr>
+<tr data-state="supported"><td class="feature">Load order, conflicts between mods, switching mods on and off</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">In the configuration tool&#x27;s Mods tab.</td></tr>
+<tr data-state="supported"><td class="feature">TexMod / uMod packages (.tpf) turned into mods</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">All 406 known texture hashes matched.</td></tr>
+<tr data-state="supported"><td class="feature">Checking a mod (errors and warnings for every file)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Modding Suite, Mods tab.</td></tr>
+<tr data-state="supported"><td class="feature">Changes while the game runs</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Pictures, .materials and .lights are taken again when saved ([Mods] HotReload). Everything else applies at start.</td></tr>
+<tr data-state="limited"><td class="feature">Requires= (a mod that needs another one)</td><td class="state"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span></td><td class="note">Checked and warned about; the game does not act on it yet.</td></tr>
+</table></section>
+<section class="features"><h2>Textures and models</h2><table>
+<tr data-state="supported"><td class="feature">Replacing any file of the game&#x27;s archives (models, textures, entities, tables)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Same format as the original.</td></tr>
+<tr data-state="supported"><td class="feature">High-resolution textures (.png, .jpg, .dds BC1-BC3, BC7)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Any resolution; animated textures frame by frame.</td></tr>
+<tr data-state="supported"><td class="feature">New textures under new names</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">For a mod&#x27;s model that names them.</td></tr>
+<tr data-state="supported"><td class="feature">Surface relief and parallax per texture (.materials)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note"></td></tr>
+<tr data-state="supported"><td class="feature">Models exported to glTF</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">All 2,432 models of the game.</td></tr>
+<tr data-state="limited"><td class="feature">Models imported from glTF (props, effects, outfits)</td><td class="state"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span></td><td class="note">Characters keep their skeleton (same bones). Not yet: tangent frames, two-component UVs, cutscene morphs, interface models.</td></tr>
+<tr data-state="planned"><td class="feature">Showing the name of the texture under the cursor in the game</td><td class="state"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span></td><td class="note"></td></tr>
+</table></section>
+<section class="features"><h2>Sound and video</h2><table>
+<tr data-state="supported"><td class="feature">Movies (Bink 1 .bik)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note"></td></tr>
+<tr data-state="supported"><td class="feature">Whole sound banks (.xwb, .xsb, .sf)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note"></td></tr>
+<tr data-state="supported"><td class="feature">Single sounds (.wav)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Replaces one entry of a wave bank.</td></tr>
+<tr data-state="experimental"><td class="feature">New sounds and cues, retimed speech</td><td class="state"><span class="badge" style="color:var(--experimental);background:var(--experimental-bg)">Experimental</span></td><td class="note">Looping new cues and the lip sync of retimed speech are not tested yet.</td></tr>
+</table></section>
+<section class="features"><h2>Texts, data and balancing</h2><table>
+<tr data-state="supported"><td class="feature">Texts (.strings), in every language</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Several mods add up.</td></tr>
+<tr data-state="limited"><td class="feature">Data values (.patch)</td><td class="state"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span></td><td class="note">Several mods add up. Not yet for character templates (enemy HP, XP, skills): the mod check refuses them, and a patched enemy is not tested in the game yet.</td></tr>
+<tr data-state="planned"><td class="feature">A balancing editor in the Modding Suite (enemies, skills, the XP table)</td><td class="state"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span></td><td class="note"></td></tr>
+<tr data-state="planned"><td class="feature">Difficulty scaling (damage, enemy HP, XP, money)</td><td class="state"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span></td><td class="note">On top of whatever balancing mods set.</td></tr>
+<tr data-state="planned"><td class="feature">Interfaces (menus, the HUD)</td><td class="state"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span></td><td class="note">Research first: where the layouts live and what a mod can replace.</td></tr>
+</table></section>
+<section class="features"><h2>Animation</h2><table>
+<tr data-state="supported"><td class="feature">Poses and animations for photo mode (.anim)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Made with the Animation Editor.</td></tr>
+<tr data-state="supported"><td class="feature">Replacing the game&#x27;s own animation clips (walks, idles, attacks)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">On any skeleton: party, NPCs, monsters.</td></tr>
+<tr data-state="supported"><td class="feature">Clip events (footsteps, sounds, effects)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note"></td></tr>
+<tr data-state="supported"><td class="feature">New clips played by a character&#x27;s states</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Through a .patch of the character&#x27;s .ani file.</td></tr>
+</table></section>
+<section class="features"><h2>Light and look</h2><table>
+<tr data-state="supported"><td class="feature">New lights in zones, changes to the game&#x27;s lamps, torches and fires (.lights)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Placed in the Modding Suite&#x27;s zone view; ray-traced shadows where ray tracing is on.</td></tr>
+<tr data-state="planned"><td class="feature">Colour grading (LUTs) from mods</td><td class="state"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span></td><td class="note"></td></tr>
+</table></section>
+<section class="features"><h2>World and content</h2><table>
+<tr data-state="experimental"><td class="feature">New doors, rooms and places to sit (.doors, .rooms, .places)</td><td class="state"><span class="badge" style="color:var(--experimental);background:var(--experimental-bg)">Experimental</span></td><td class="note">A new door into a tavern and places to sit work in the game. A copied room loads but its geometry is not drawn yet.</td></tr>
+<tr data-state="experimental"><td class="feature">New characters (NPCs with an outfit, a name, lines, a walk)</td><td class="state"><span class="badge" style="color:var(--experimental);background:var(--experimental-bg)">Experimental</span></td><td class="note">Made in the Modding Suite. Voices for new lines are not supported yet.</td></tr>
+<tr data-state="progress"><td class="feature">Script mods (quests, events, mechanics)</td><td class="state"><span class="badge" style="color:var(--progress);background:var(--progress-bg)">In progress</span></td><td class="note">A disassembler, an assembler and a linker exist; a decompiler and a compiler are next.</td></tr>
+<tr data-state="notplanned"><td class="feature">Whole new levels</td><td class="state"><span class="badge" style="color:var(--notplanned);background:var(--notplanned-bg)">Not planned</span></td><td class="note">Needs collision and navigation formats that are not decoded.</td></tr>
+<tr data-state="notplanned"><td class="feature">Save games, the game&#x27;s code</td><td class="state"><span class="badge" style="color:var(--notplanned);background:var(--notplanned-bg)">Not planned</span></td><td class="note">Mods change the game&#x27;s data, not its program or your saves.</td></tr>
+</table></section>
+<h2>Tools for modders</h2><div class="tools">
+<div class="tool"><b>Configuration tool, Mods tab</b><span>Install, order, switch and import mods; the modding guide in five languages.</span></div>
+<div class="tool"><b>Sudeki Modding Suite</b><span>Every asset of the game read from your own install: textures, models, characters, animations, zones, sounds, texts, data. Checks mods and makes them (materials, lights, new characters, glTF import).</span></div>
+<div class="tool"><b>Sudeki Animation Editor</b><span>Poses and animations for Tal, Ailish, Buki and Elco, and edits of the game&#x27;s own clips for any skeleton.</span></div>
+<div class="tool"><b>Extract Game Assets</b><span>The game&#x27;s models (glTF) and textures (PNG) from your own install, as a start for mods.</span></div>
+</div>
+<footer>Sudeki Remastered is a fan project; you need your own copy of Sudeki. Source of this page: <a href="https://github.com/SupremeVoid/sudeki-remastered-modding-status">github.com/SupremeVoid/sudeki-remastered-modding-status</a></footer>
+</main>
+<script>
+document.querySelectorAll('.chip').forEach(function (chip) {
+  chip.addEventListener('click', function () {
+    var on = chip.getAttribute('aria-pressed') !== 'true';
+    document.querySelectorAll('.chip').forEach(function (c) { c.setAttribute('aria-pressed', 'false'); });
+    chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+    document.querySelectorAll('tr[data-state]').forEach(function (row) {
+      row.hidden = on && row.dataset.state !== chip.dataset.state;
+    });
+    document.querySelectorAll('section.features').forEach(function (s) {
+      s.hidden = !s.querySelector('tr[data-state]:not([hidden])');
+    });
+  });
+});
+</script>
+</body>
+</html>
