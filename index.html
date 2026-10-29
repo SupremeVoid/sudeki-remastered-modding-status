@@ -44,6 +44,12 @@ td.note { color: var(--muted); font-size: 0.92rem; }
 .tool { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
 .tool b { display: block; margin-bottom: 4px; }
 .tool span { color: var(--muted); font-size: 0.92rem; }
+details.changelog { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; margin: 0 0 24px; }
+details.changelog summary { padding: 10px 14px; cursor: pointer; font-weight: 600; }
+details.changelog summary span { color: var(--muted); font-weight: 400; }
+.entry { padding: 0 14px 12px; }
+.entry h3 { font-size: 0.95rem; margin: 8px 0 4px; }
+.entry ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: 0.92rem; }
 footer { margin-top: 40px; color: var(--muted); font-size: 0.9rem; }
 a { color: var(--accent); }
 @media (max-width: 640px) {
@@ -56,19 +62,38 @@ a { color: var(--accent); }
 <body>
 <main>
 <h1>Sudeki Remastered: modding status</h1>
-<p class="updated">Last updated 2026-10-28</p>
+<p class="updated">Last updated 2026-10-29</p>
 <p class="intro">What mods can change in Sudeki Remastered today, what is experimental and what is still planned. Mods go into the mods folder (or the configuration tool&#x27;s Mods tab) and never touch the installed game. We update this page as the work moves on.</p>
+<details class="changelog"><summary>Changelog <span>(latest 2026-10-29)</span></summary>
+<div class="entry"><h3>2026-10-29</h3><ul>
+<li>A balancing editor in the Modding Suite: supported (the Balancing tab).</li>
+<li>New: balancing values the game&#x27;s scripts set (.balance files), supported.</li>
+<li>New: enemies of one zone changed alone (region copies), supported.</li>
+<li>Data values (.patch) now include character templates (enemy HP, XP, skills).</li>
+<li>Difficulty scaling: supported with limits (a setting in the ini file for now).</li>
+<li>Mods tab: balancing mods are compared value by value.</li>
+<li>New: the Steam and GOG versions of the game, supported.</li>
+<li>mod.ini: one name and a Markdown description in the author&#x27;s language.</li>
+<li>New: the remaster&#x27;s own content (benches, sitting down), which mods can replace.</li>
+<li>Interfaces (menus, the HUD): not planned; interface models are no longer listed as coming.</li>
+<li>The Modding Suite and the Animation Editor save into a target mod chosen in their toolbar.</li>
+</ul></div>
+<div class="entry"><h3>2026-10-28</h3><ul>
+<li>Initial status.</li>
+</ul></div>
+</details>
 <div class="summary">
-<button class="chip" data-state="supported" aria-pressed="false"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span> 19</button>
-<button class="chip" data-state="limited" aria-pressed="false"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span> 3</button>
+<button class="chip" data-state="supported" aria-pressed="false"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span> 24</button>
+<button class="chip" data-state="limited" aria-pressed="false"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span> 4</button>
 <button class="chip" data-state="experimental" aria-pressed="false"><span class="badge" style="color:var(--experimental);background:var(--experimental-bg)">Experimental</span> 3</button>
 <button class="chip" data-state="progress" aria-pressed="false"><span class="badge" style="color:var(--progress);background:var(--progress-bg)">In progress</span> 1</button>
-<button class="chip" data-state="planned" aria-pressed="false"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span> 5</button>
-<button class="chip" data-state="notplanned" aria-pressed="false"><span class="badge" style="color:var(--notplanned);background:var(--notplanned-bg)">Not planned</span> 2</button>
+<button class="chip" data-state="planned" aria-pressed="false"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span> 2</button>
+<button class="chip" data-state="notplanned" aria-pressed="false"><span class="badge" style="color:var(--notplanned);background:var(--notplanned-bg)">Not planned</span> 3</button>
 </div>
 <section class="features"><h2>Mods in general</h2><table>
-<tr data-state="supported"><td class="feature">Mod folders and .zip files, mod.ini (name, author, version, description in five languages)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note"></td></tr>
-<tr data-state="supported"><td class="feature">Load order, conflicts between mods, switching mods on and off</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">In the configuration tool&#x27;s Mods tab.</td></tr>
+<tr data-state="supported"><td class="feature">Mod folders and .zip files, mod.ini (name, author, version, a Markdown description)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">One name and description in the author&#x27;s language; a mod works the same in every language of the game.</td></tr>
+<tr data-state="supported"><td class="feature">Steam and GOG versions of the game</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">The same mods on both.</td></tr>
+<tr data-state="supported"><td class="feature">Load order, conflicts between mods, switching mods on and off</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">In the configuration tool&#x27;s Mods tab. Balancing mods are compared value by value: the Mods tab lists every value two mods set differently and which one wins.</td></tr>
 <tr data-state="supported"><td class="feature">TexMod / uMod packages (.tpf) turned into mods</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">All 406 known texture hashes matched.</td></tr>
 <tr data-state="supported"><td class="feature">Checking a mod (errors and warnings for every file)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Modding Suite, Mods tab.</td></tr>
 <tr data-state="supported"><td class="feature">Changes while the game runs</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Pictures, .materials and .lights are taken again when saved ([Mods] HotReload). Everything else applies at start.</td></tr>
@@ -80,7 +105,7 @@ a { color: var(--accent); }
 <tr data-state="supported"><td class="feature">New textures under new names</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">For a mod&#x27;s model that names them.</td></tr>
 <tr data-state="supported"><td class="feature">Surface relief and parallax per texture (.materials)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note"></td></tr>
 <tr data-state="supported"><td class="feature">Models exported to glTF</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">All 2,432 models of the game.</td></tr>
-<tr data-state="limited"><td class="feature">Models imported from glTF (props, effects, outfits)</td><td class="state"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span></td><td class="note">Characters keep their skeleton (same bones). Not yet: tangent frames, two-component UVs, cutscene morphs, interface models.</td></tr>
+<tr data-state="limited"><td class="feature">Models imported from glTF (props, effects, outfits)</td><td class="state"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span></td><td class="note">Characters keep their skeleton (same bones). Not yet: tangent frames, two-component UVs, cutscene morphs. Interface models are not planned (see Interfaces).</td></tr>
 <tr data-state="planned"><td class="feature">Showing the name of the texture under the cursor in the game</td><td class="state"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span></td><td class="note"></td></tr>
 </table></section>
 <section class="features"><h2>Sound and video</h2><table>
@@ -91,10 +116,12 @@ a { color: var(--accent); }
 </table></section>
 <section class="features"><h2>Texts, data and balancing</h2><table>
 <tr data-state="supported"><td class="feature">Texts (.strings), in every language</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Several mods add up.</td></tr>
-<tr data-state="limited"><td class="feature">Data values (.patch)</td><td class="state"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span></td><td class="note">Several mods add up. Not yet for character templates (enemy HP, XP, skills): the mod check refuses them, and a patched enemy is not tested in the game yet.</td></tr>
-<tr data-state="planned"><td class="feature">A balancing editor in the Modding Suite (enemies, skills, the XP table)</td><td class="state"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span></td><td class="note"></td></tr>
-<tr data-state="planned"><td class="feature">Difficulty scaling (damage, enemy HP, XP, money)</td><td class="state"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span></td><td class="note">On top of whatever balancing mods set.</td></tr>
-<tr data-state="planned"><td class="feature">Interfaces (menus, the HUD)</td><td class="state"><span class="badge" style="color:var(--planned);background:var(--planned-bg)">Planned</span></td><td class="note">Research first: where the layouts live and what a mod can replace.</td></tr>
+<tr data-state="limited"><td class="feature">Data values (.patch)</td><td class="state"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span></td><td class="note">Several mods add up, character templates (enemy HP, XP, skills) included. The party&#x27;s base stats and ability gains are kept in the save, so a change shows in a new game only.</td></tr>
+<tr data-state="supported"><td class="feature">A balancing editor in the Modding Suite</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">The Balancing tab: 14 tables (weapons, armour, potions, the party, abilities, the level curve, skills, enemies, drops ...) with the game&#x27;s names; single cells or a whole column at once (multiply, add, set).</td></tr>
+<tr data-state="supported"><td class="feature">Balancing values the game&#x27;s scripts set (.balance)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Rune strengths, blacksmith and shop prices, what shops sell, traders&#x27; prices, defence factors, the AI&#x27;s damage factor, quest rewards. Quest rewards are not tested in the game yet.</td></tr>
+<tr data-state="supported"><td class="feature">Enemies of one zone changed alone (region copies)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">A copy of a monster for one zone, edited on its own; bosses are left out (the scripts spawn them).</td></tr>
+<tr data-state="limited"><td class="feature">Difficulty scaling (damage, enemy HP, XP, money)</td><td class="state"><span class="badge" style="color:var(--limited);background:var(--limited-bg)">Supported, with limits</span></td><td class="note">On top of whatever balancing mods set. A setting in the ini file for now, not yet in the menus.</td></tr>
+<tr data-state="notplanned"><td class="feature">Interfaces (menus, the HUD)</td><td class="state"><span class="badge" style="color:var(--notplanned);background:var(--notplanned-bg)">Not planned</span></td><td class="note">The layouts live in the interface models and the game&#x27;s program, out of a mod&#x27;s reach. Interface changes come as features of the remaster itself, such as its options menu.</td></tr>
 </table></section>
 <section class="features"><h2>Animation</h2><table>
 <tr data-state="supported"><td class="feature">Poses and animations for photo mode (.anim)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Made with the Animation Editor.</td></tr>
@@ -108,6 +135,7 @@ a { color: var(--accent); }
 </table></section>
 <section class="features"><h2>World and content</h2><table>
 <tr data-state="experimental"><td class="feature">New doors, rooms and places to sit (.doors, .rooms, .places)</td><td class="state"><span class="badge" style="color:var(--experimental);background:var(--experimental-bg)">Experimental</span></td><td class="note">A new door into a tavern and places to sit work in the game. A copied room loads but its geometry is not drawn yet.</td></tr>
+<tr data-state="supported"><td class="feature">The remaster&#x27;s own content (the benches of New Brightwater, sitting down)</td><td class="state"><span class="badge" style="color:var(--supported);background:var(--supported-bg)">Supported</span></td><td class="note">Built in and always there; a mod replaces any piece of it with a file or place of the same name.</td></tr>
 <tr data-state="experimental"><td class="feature">New characters (NPCs with an outfit, a name, lines, a walk)</td><td class="state"><span class="badge" style="color:var(--experimental);background:var(--experimental-bg)">Experimental</span></td><td class="note">Made in the Modding Suite. Voices for new lines are not supported yet.</td></tr>
 <tr data-state="progress"><td class="feature">Script mods (quests, events, mechanics)</td><td class="state"><span class="badge" style="color:var(--progress);background:var(--progress-bg)">In progress</span></td><td class="note">A disassembler, an assembler and a linker exist; a decompiler and a compiler are next.</td></tr>
 <tr data-state="notplanned"><td class="feature">Whole new levels</td><td class="state"><span class="badge" style="color:var(--notplanned);background:var(--notplanned-bg)">Not planned</span></td><td class="note">Needs collision and navigation formats that are not decoded.</td></tr>
@@ -115,8 +143,8 @@ a { color: var(--accent); }
 </table></section>
 <h2>Tools for modders</h2><div class="tools">
 <div class="tool"><b>Configuration tool, Mods tab</b><span>Install, order, switch and import mods; the modding guide in five languages.</span></div>
-<div class="tool"><b>Sudeki Modding Suite</b><span>Every asset of the game read from your own install: textures, models, characters, animations, zones, sounds, texts, data. Checks mods and makes them (materials, lights, new characters, glTF import).</span></div>
-<div class="tool"><b>Sudeki Animation Editor</b><span>Poses and animations for Tal, Ailish, Buki and Elco, and edits of the game&#x27;s own clips for any skeleton.</span></div>
+<div class="tool"><b>Sudeki Modding Suite</b><span>Every asset of the game read from your own install: textures, models, characters, animations, zones, sounds, texts, data. Checks mods and makes them (materials, lights, balancing, new characters, glTF import) into the target mod chosen in its toolbar.</span></div>
+<div class="tool"><b>Sudeki Animation Editor</b><span>Poses and animations for Tal, Ailish, Buki and Elco, and edits of the game&#x27;s own clips for any skeleton, saved into the target mod chosen in its toolbar.</span></div>
 <div class="tool"><b>Extract Game Assets</b><span>The game&#x27;s models (glTF) and textures (PNG) from your own install, as a start for mods.</span></div>
 </div>
 <footer>Sudeki Remastered is a fan project; you need your own copy of Sudeki. Source of this page: <a href="https://github.com/SupremeVoid/sudeki-remastered-modding-status">github.com/SupremeVoid/sudeki-remastered-modding-status</a></footer>
